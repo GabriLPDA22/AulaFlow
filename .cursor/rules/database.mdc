@@ -1,0 +1,60 @@
+---
+description: Reglas de acceso a base de datos - Supabase como PostgreSQL gestionado
+alwaysApply: true
+---
+
+# AulaFlow — Base de Datos
+
+## Decisión de infraestructura
+
+Supabase se usa **únicamente como PostgreSQL gestionado**.
+
+NO es la plataforma de la aplicación. No usar:
+- Supabase Auth
+- Supabase JS SDK
+- Supabase client en el backend
+- Row Level Security como dependencia core
+- Supabase table APIs
+
+## Stack de acceso a datos
+
+- ASP.NET Core 9
+- Entity Framework Core + Npgsql.EntityFrameworkCore.PostgreSQL
+- `UseNpgsql()` con connection string estándar
+- Migraciones EF Core normales
+
+## Autenticación
+
+Permanece 100% en el backend .NET:
+- JWT access tokens (15 min)
+- Refresh tokens (7 días, rotación)
+- Usuarios y roles gestionados por la aplicación
+
+## Connection strings en Supabase
+
+Supabase ofrece dos connection strings desde el dashboard:
+
+### Conexión directa (modo Transaction — Session para EF Core)
+```
+Host=db.xxxxx.supabase.co;Port=5432;Database=postgres;Username=postgres;Password=YOUR_PASSWORD
+```
+
+### Pooler / Supavisor (recomendado si hay restricciones IPv6 o en producción)
+```
+Host=aws-0-eu-west-1.pooler.supabase.com;Port=6543;Database=postgres;Username=postgres.xxxxx;Password=YOUR_PASSWORD
+```
+
+**Nota**: Para EF Core con migraciones, usar la conexión directa (puerto 5432) o el pooler en modo Session (no Transaction).
+Para el API en producción, usar el pooler si el entorno no soporta IPv6.
+
+## Portabilidad
+
+El sistema debe poder moverse a cualquier host PostgreSQL cambiando solo la connection string.
+No introducir dependencias de Supabase-specific en entidades, DbContext ni servicios.
+
+## Tenancy y autorización
+
+Controlados por lógica de la aplicación en el backend:
+- Todas las entidades tienen `BusinessId`
+- Los servicios filtran siempre por `BusinessId` del claim JWT
+- Sin dependencia de RLS de PostgreSQL

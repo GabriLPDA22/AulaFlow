@@ -1,0 +1,46 @@
+---
+description: Normas de arquitectura y código para el backend ASP.NET Core 9
+globs: backend/**/*.cs
+alwaysApply: false
+---
+
+# AulaFlow — Normas Backend
+
+## Stack
+
+ASP.NET Core 9 Web API · Entity Framework Core · PostgreSQL · JWT + Refresh Tokens
+
+## Arquitectura de proyectos
+
+```
+AulaFlow.Api           → Controllers, Middleware, Extensions, Program.cs
+AulaFlow.Application   → Servicios, DTOs, Interfaces por módulo
+AulaFlow.Domain        → Entidades, Enums, BaseEntity
+AulaFlow.Infrastructure → DbContext, Configuraciones EF, Implementaciones
+```
+
+## Normas de código
+
+- Controllers finos: solo reciben, validan entrada y delegan al servicio.
+- Lógica de negocio en servicios (Application layer).
+- DTOs claros separados de entidades. Nunca exponer entidades al frontend.
+- Validación obligatoria con FluentValidation o DataAnnotations.
+- Manejo global de errores con middleware o filtro centralizado.
+- Logging básico con ILogger<T>.
+- Respuestas HTTP semánticamente correctas (201, 400, 401, 403, 404, 409...).
+- Endpoints REST coherentes y consistentes en nombres.
+- Migraciones limpias con EF Core, sin SQL manual.
+
+## Multiempresa
+
+- Todas las entidades de negocio tienen `BusinessId`.
+- Los servicios siempre filtran por BusinessId del usuario autenticado.
+- No usar row-level security de Postgres todavía, filtrar en app.
+
+## Nombres y convenciones
+
+- Entidades: PascalCase singular (`Lead`, `Conversation`)
+- DTOs: `{Entity}Dto`, `Create{Entity}Request`, `Update{Entity}Request`
+- Servicios: `I{Module}Service` / `{Module}Service`
+- Controllers: `{Module}Controller`
+- Endpoints: kebab-case en plural (`/api/knowledge-sources`, `/api/leads`)

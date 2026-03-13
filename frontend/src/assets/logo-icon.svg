@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" fill="none">
+  <!-- Fondo -->
+  <rect width="100" height="100" rx="22" fill="#1D3557"/>
+
+  <!-- Rayo  marca propia AulaFlow -->
+  <path
+    d="M61 12L28 52H48L39 88L76 46H54L61 12Z"
+    fill="white"
+  />
+
+  <!-- Punto acento teal  détail de marca -->
+  <circle cx="68" cy="20" r="7" fill="#2A9D8F"/>
+</svg>

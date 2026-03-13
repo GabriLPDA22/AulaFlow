@@ -1,0 +1,23 @@
+{
+  // Ocultar del explorador de archivos las carpetas de build de .NET
+  "files.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/.vs": true
+  },
+
+  // No seguir cambios en carpetas de build (mejora rendimiento)
+  "files.watcherExclude": {
+    "**/bin/**": true,
+    "**/obj/**": true,
+    "**/node_modules/**": true
+  },
+
+  // No buscar dentro de carpetas de build
+  "search.exclude": {
+    "**/bin": true,
+    "**/obj": true,
+    "**/node_modules": true,
+    "**/dist": true
+  }
+}

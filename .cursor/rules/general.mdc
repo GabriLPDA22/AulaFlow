@@ -1,0 +1,47 @@
+---
+description: Reglas generales del proyecto AulaFlow - SaaS B2B para academias
+alwaysApply: true
+---
+
+# AulaFlow — Reglas Generales del Proyecto
+
+## Qué es AulaFlow
+
+SaaS B2B web para academias, centros de formación y pequeños negocios.
+Permite responder dudas automáticamente, captar leads, clasificar contactos, resumir conversaciones y centralizar conocimiento del negocio.
+
+## Prioridades del producto
+
+1. MVP vendible y realista
+2. Claridad del código
+3. Mantenibilidad real
+4. Velocidad de desarrollo
+5. Identidad visual propia
+6. Buena UX sin fricción
+
+## Normas generales
+
+- No sobreingenierizar. Si algo puede ser simple, que lo sea.
+- No añadir funcionalidades fuera del MVP actual.
+- No usar patrones complejos si no aportan valor real.
+- Mantener consistencia estricta en nombres, estructuras, DTOs y endpoints.
+- Pensar siempre en producto real vendible, no en demo académica.
+- Si hay ambigüedad, proponer la solución más simple y sólida.
+- No generar código repetitivo o boilerplate sin criterio.
+
+## Stack obligatorio
+
+- **Frontend**: Vue 3 + Vite + Tailwind CSS
+- **Backend**: ASP.NET Core 9 Web API + EF Core
+- **Base de datos**: PostgreSQL
+- **Auth**: JWT + refresh tokens
+
+## Fuera del MVP actual
+
+- App móvil
+- WhatsApp / voz
+- CRM complejo
+- Automatizaciones avanzadas
+- Analítica compleja
+- Multiidioma avanzado
+- Calendarios complejos

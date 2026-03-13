@@ -1,0 +1,48 @@
+---
+description: Normas de arquitectura y código para el frontend Vue 3 + Tailwind
+globs: frontend/src/**/*.{vue,ts}
+alwaysApply: false
+---
+
+# AulaFlow — Normas Frontend
+
+## Stack
+
+Vue 3 (Composition API) · Vite · Tailwind CSS · Pinia · Vue Router
+
+## Estructura de carpetas
+
+```
+src/
+  assets/          → fonts, iconos estáticos
+  components/
+    ui/            → AppButton, AppInput, AppBadge, AppCard, AppModal...
+    layout/        → AppShell, AppSidebar, AppHeader
+    shared/        → EmptyState, Skeleton, ConfirmModal
+  views/           → por módulo: auth/, dashboard/, leads/, conversations/...
+  layouts/         → AdminLayout, PublicLayout
+  composables/     → useAuth, useLeads, useConversations...
+  stores/          → Pinia: authStore, leadsStore...
+  services/        → API layer: authService, leadsService...
+  types/           → interfaces TypeScript del dominio
+  router/          → index.ts con guards de auth
+```
+
+## Normas de código
+
+- Composition API siempre. Sin Options API.
+- Componentes pequeños, enfocados, reutilizables.
+- Tipado explícito en props, emits y respuestas de API.
+- No mezclar lógica de UI con llamadas a API (usar composables o stores).
+- Formularios controlados con v-model y validación clara.
+- Tablas simples: no usar librerías pesadas si no son necesarias.
+- Animaciones mínimas y con propósito.
+
+## Normas de diseño en componentes
+
+- Seguir el Design System de AulaFlow (ver docs/design-system.md).
+- No usar clases Tailwind caóticamente: agrupar por sección lógica.
+- Consistencia en todos los botones, inputs, cards y badges.
+- Evitar look de admin template: no layouts de 4 cards iguales + tabla debajo.
+- Tipografía: Plus Jakarta Sans para UI, Sora para headings/display.
+- Espaciado cuidado. Jerarquía visual fuerte.

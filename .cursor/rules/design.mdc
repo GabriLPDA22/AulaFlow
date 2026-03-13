@@ -1,0 +1,84 @@
+---
+description: Sistema de diseño y dirección visual de AulaFlow
+globs: frontend/src/**/*.{vue,css}
+alwaysApply: false
+---
+
+# AulaFlow — Sistema de Diseño
+
+## Dirección visual
+
+Minimalista · Premium · Editorial · Sobrio · Reconocible
+NO: dashboard genérico, admin template, look bootstrap, exceso de gradientes.
+
+## Paleta de colores
+
+```
+Background:   #F7F7F3   (warm off-white, no pure white)
+Surface:      #FFFFFF
+Border:       #E5E3E0
+
+Text primary:    #111111
+Text secondary:  #5C5C5C
+Text disabled:   #9CA3AF
+
+Brand primary:   #1D3557   (midnight navy)
+Brand hover:     #16293F
+Accent:          #2A9D8F   (teal, usar con mucha moderación)
+
+Success:  #16A34A
+Warning:  #D97706
+Error:    #DC2626
+Info:     #2563EB
+```
+
+## Tipografía
+
+- **Display / Headings**: Sora (weights: 400, 600)
+- **UI / Body / Labels**: Plus Jakarta Sans (weights: 400, 500, 600)
+
+Escala:
+- display:  2rem / 600 / Sora
+- h1:       1.5rem / 600 / Sora
+- h2:       1.25rem / 600 / Sora
+- h3:       1.125rem / 500 / Plus Jakarta
+- body:     0.9375rem / 400 / Plus Jakarta
+- small:    0.8125rem / 400 / Plus Jakarta
+- label:    0.75rem / 500 / Plus Jakarta / uppercase tracking-wide
+
+## Espaciado
+
+Base unit: 4px. Escala: 4, 8, 12, 16, 24, 32, 48, 64, 96.
+Padding cards: 24px. Gap entre secciones: 32–48px. Padding página: 32px.
+
+## Bordes y radios
+
+- Inputs, cards pequeñas: rounded-lg (8px)
+- Cards grandes, modales: rounded-xl (12px)
+- Badges, pills: rounded-full
+- Botones: rounded-lg (8px)
+
+## Sombras (mínimas y sutiles)
+
+```css
+shadow-sm:  0 1px 2px rgba(0,0,0,0.04)
+shadow-md:  0 2px 8px rgba(0,0,0,0.06)
+shadow-lg:  0 4px 16px rgba(0,0,0,0.08)
+```
+
+## Componentes clave
+
+**Botón primario**: bg-[#1D3557] text-white rounded-lg px-4 py-2.5 font-medium
+**Input**: border border-[#E5E3E0] rounded-lg px-3.5 py-2.5 focus:ring-2 ring-[#1D3557]/20
+**Badge status**: pills redondeados, fondo suave del color del estado
+**Card**: bg-white rounded-xl border border-[#E5E3E0] p-6
+**Empty state**: ilustración sutil + texto + acción clara
+
+## Lo que NO hacer
+
+- No 4 cards iguales en fila como primer bloque
+- No sidebar muy oscura con items genéricos
+- No gradientes sin propósito
+- No sombras pesadas o dobles
+- No composición 100% simétrica
+- No colores de marca en exceso (80% neutros)
