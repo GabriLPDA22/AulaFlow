@@ -9,6 +9,7 @@ import AppInput from '@/components/ui/AppInput.vue'
 import AppTextarea from '@/components/ui/AppTextarea.vue'
 import AppSelect from '@/components/ui/AppSelect.vue'
 import AppModal from '@/components/ui/AppModal.vue'
+import AppToggle from '@/components/ui/AppToggle.vue'
 import PageHeader from '@/components/shared/PageHeader.vue'
 import EmptyState from '@/components/shared/EmptyState.vue'
 
@@ -134,7 +135,7 @@ function formatDate(dateStr: string) {
       <AppCard
         v-for="source in sources"
         :key="source.id"
-        class="flex items-start gap-4 group"
+        class="flex items-start gap-4"
         :class="{ 'opacity-60': !source.isActive }"
       >
         <!-- Type badge -->
@@ -156,36 +157,26 @@ function formatDate(dateStr: string) {
         </div>
 
         <!-- Acciones -->
-        <div class="flex items-center gap-2 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-          <!-- Toggle activo -->
-          <button
-            @click="toggleActive(source)"
+        <div class="flex items-center gap-1 shrink-0">
+          <AppToggle
+            :model-value="source.isActive"
+            @update:model-value="toggleActive(source)"
             :title="source.isActive ? 'Desactivar' : 'Activar'"
-            :class="[
-              'relative w-9 h-5 rounded-full transition-colors',
-              source.isActive ? 'bg-brand' : 'bg-border',
-            ]"
-          >
-            <span
-              :class="[
-                'absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform',
-                source.isActive ? 'translate-x-4' : 'translate-x-0.5',
-              ]"
-            />
-          </button>
-
+          />
+          <div class="w-px h-4 bg-border mx-1" />
           <button
             @click="openEdit(source)"
             class="p-1.5 rounded-lg text-ink-disabled hover:text-ink hover:bg-subtle transition-colors"
+            title="Editar"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
             </svg>
           </button>
-
           <button
             @click="deleteSource(source)"
             class="p-1.5 rounded-lg text-ink-disabled hover:text-red-500 hover:bg-red-50 transition-colors"
+            title="Eliminar"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />

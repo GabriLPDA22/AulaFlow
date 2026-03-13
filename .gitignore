@@ -91,3 +91,5 @@ TestResults/
 *.trx
 *.coveragexml
 lcov.info
+
+.fake

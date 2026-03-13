@@ -6,6 +6,7 @@ import AppButton from '@/components/ui/AppButton.vue'
 import AppCard from '@/components/ui/AppCard.vue'
 import AppInput from '@/components/ui/AppInput.vue'
 import AppTextarea from '@/components/ui/AppTextarea.vue'
+import AppToggle from '@/components/ui/AppToggle.vue'
 import PageHeader from '@/components/shared/PageHeader.vue'
 
 const isLoading = ref(true)
@@ -147,21 +148,7 @@ async function saveAssistant() {
                   <p class="text-small font-medium text-ink">Captura de leads</p>
                   <p class="text-label text-ink-secondary">El asistente pedirá los datos del visitante si muestra interés.</p>
                 </div>
-                <button
-                  type="button"
-                  @click="assistantForm.leadCaptureEnabled = !assistantForm.leadCaptureEnabled"
-                  :class="[
-                    'relative w-10 h-5.5 rounded-full transition-colors shrink-0',
-                    assistantForm.leadCaptureEnabled ? 'bg-brand' : 'bg-border',
-                  ]"
-                >
-                  <span
-                    :class="[
-                      'absolute top-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform',
-                      assistantForm.leadCaptureEnabled ? 'translate-x-5' : 'translate-x-0.5',
-                    ]"
-                  />
-                </button>
+                <AppToggle v-model="assistantForm.leadCaptureEnabled" />
               </div>
 
               <AppInput

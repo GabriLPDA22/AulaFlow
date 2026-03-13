@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen overflow-hidden bg-base">
     <AppSidebar />
-    <main class="flex-1 overflow-y-auto">
+    <main class="flex-1 overflow-y-auto min-w-0 transition-all duration-200">
       <div class="max-w-6xl mx-auto px-8 py-8">
         <RouterView />
       </div>

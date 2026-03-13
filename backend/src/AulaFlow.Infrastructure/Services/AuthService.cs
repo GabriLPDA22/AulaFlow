@@ -35,6 +35,40 @@ public class AuthService(
         return await GenerateAuthResponseAsync(user);
     }
 
+    public async Task<AuthResponse> RegisterAsync(RegisterRequest request)
+    {
+        var emailLower = request.Email.ToLower();
+
+        if (await db.Users.AnyAsync(u => u.Email == emailLower))
+            throw new InvalidOperationException("Ya existe un usuario con ese correo");
+
+        var business = new AulaFlow.Domain.Entities.Business
+        {
+            Name = request.BusinessName,
+            Slug = request.BusinessName.ToLower().Replace(" ", "-")
+        };
+
+        db.Businesses.Add(business);
+
+        var user = new AulaFlow.Domain.Entities.User
+        {
+            BusinessId = business.Id,
+            Name = request.Name,
+            Email = emailLower,
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password),
+            Role = AulaFlow.Domain.Enums.UserRole.Admin,
+            IsActive = true
+        };
+
+        db.Users.Add(user);
+        await db.SaveChangesAsync();
+
+        user.Business = business;
+        logger.LogInformation("Registered new business {BusinessId} with user {UserId}", business.Id, user.Id);
+
+        return await GenerateAuthResponseAsync(user);
+    }
+
     public async Task<AuthResponse> RefreshAsync(string refreshToken)
     {
         var token = await db.RefreshTokens
