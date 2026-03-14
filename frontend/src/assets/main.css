@@ -24,19 +24,46 @@
   .font-display {
     font-family: 'Sora', sans-serif;
   }
+}
 
-  /* Scrollbar sutil */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    @apply bg-border rounded-full;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-ink-disabled;
-  }
+/* ── Scrollbar personalizada ────────────────────────────────────────
+   Webkit (Chrome, Edge, Safari) — barra delgada brand navy/teal
+   Firefox — thin + brand colors vía scrollbar-color
+   ─────────────────────────────────────────────────────────────── */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1D3557 transparent;
+}
+
+/* Webkit */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1D3557 0%, #2A9D8F 100%);
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #243f69 0%, #238f82 100%);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Ocultar botón scroll-to-top cuando el menú mobile está abierto */
+body.nav-open .land-top-btn,
+body.nav-open .p-top-btn,
+body.nav-open .fn-top-btn {
+  display: none !important;
 }

@@ -7,6 +7,7 @@ public record BusinessDto(
     string Name,
     string Slug,
     string? LogoUrl,
+    Guid BusinessToken,
     DateTime CreatedAt
 );
 

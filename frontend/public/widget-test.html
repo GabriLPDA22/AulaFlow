@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AulaFlow Widget — Test</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #f0f0ec; min-height: 100vh; }
+    .fake-site { max-width: 760px; margin: 0 auto; padding: 60px 24px; }
+    h1 { font-size: 2rem; font-weight: 700; color: #111; margin-bottom: 12px; }
+    p { color: #555; line-height: 1.7; margin-bottom: 16px; font-size: 1rem; }
+    .badge {
+      display: inline-block; background: #1D3557; color: white;
+      font-size: 12px; font-weight: 600; padding: 4px 10px; border-radius: 20px;
+      margin-bottom: 24px; letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="fake-site">
+    <span class="badge">🧪 Página de test del widget</span>
+    <h1>Academia de Ejemplo</h1>
+    <p>
+      Esta es una página de prueba para verificar que el widget de AulaFlow funciona correctamente.
+      El botón de chat debería aparecer en la esquina inferior derecha.
+    </p>
+    <p>
+      Escribe un mensaje para probar la conversación. Tras dos intercambios aparecerá
+      el formulario de captura de leads.
+    </p>
+    <p style="color:#aaa; font-size: 13px;">
+      ⚠️ Asegúrate de que el backend está corriendo en <code>http://localhost:5000</code>
+      y de reemplazar <code>TU_TOKEN</code> con el token real de tu negocio.
+    </p>
+  </div>
+
+  <!-- Widget de AulaFlow — reemplaza TU_TOKEN con el token real -->
+  <script src="/widget.js" data-token="e7f66a43-e6ff-498e-b364-1d738be5b4e6" data-api="http://localhost:5000"></script>
+</body>
+</html>

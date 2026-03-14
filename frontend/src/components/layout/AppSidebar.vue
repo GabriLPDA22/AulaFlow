@@ -31,8 +31,8 @@ async function handleLogout() {
   router.push('/login')
 }
 
-function showTooltip(e: MouseEvent, text: string, danger = false, always = false) {
-  if (!collapsed.value && !always) return
+function showTooltip(e: MouseEvent, text: string, danger = false) {
+  if (!collapsed.value) return
   const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
   tooltip.value = {
     text,
@@ -93,8 +93,8 @@ function hideTooltip() {
       </RouterLink>
     </nav>
 
-    <!-- Toggle -->
-    <div class="px-2 pb-2 shrink-0">
+    <!-- Toggle (oculto en mobile, el cierre lo hace el overlay) -->
+    <div class="px-2 pb-2 shrink-0 hidden md:block">
       <button
         @click="toggle(); hideTooltip()"
         :class="[
@@ -157,8 +157,6 @@ function hideTooltip() {
           <button
             @click="handleLogout"
             class="p-1.5 rounded-lg text-ink-disabled hover:text-red-500 hover:bg-red-50 transition-colors shrink-0"
-            @mouseenter="showTooltip($event, 'Cerrar sesión', true, true)"
-            @mouseleave="hideTooltip"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />

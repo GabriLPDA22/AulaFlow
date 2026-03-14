@@ -27,5 +27,5 @@ public class BusinessService(AppDbContext db) : IBusinessService
     }
 
     private static BusinessDto MapToDto(Domain.Entities.Business b) =>
-        new(b.Id, b.Name, b.Slug, b.LogoUrl, b.CreatedAt);
+        new(b.Id, b.Name, b.Slug, b.LogoUrl, b.BusinessToken, b.CreatedAt);
 }
